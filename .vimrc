@@ -30,6 +30,10 @@ set incsearch  " Jumping search
 " Always show the status line
 set laststatus=2
 
+" Horisontal/vertical line on cursor location
+set cursorline
+" set cursorcolumn
+
 set encoding=UTF-8
 
 call plug#begin('~/.vim/plugged')
@@ -89,11 +93,22 @@ let g:airline_theme='badwolf'
 
 " Theme
 set termguicolors
-
+" set notermguicolors
+" set background=dark
+" set t_Co=256
+" hi clear
+" syntax on
 let g:tokyonight_style = 'night' " available: night, storm
 let g:tokyonight_enable_italic = 1
-
+let g:tokyonight_transparent_background = 1
+let g:tokyonight_menu_selection_background = 'blue'
 colorscheme tokyonight
+
+" Transparent background
+" hi Normal     ctermbg=NONE guibg=NONE
+" hi LineNr     ctermbg=NONE guibg=NONE
+" hi SignColumn ctermbg=NONE guibg=NONE
+
 " Indentation
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
@@ -106,7 +121,7 @@ nnoremap <C-p> :Files<CR>
 nnoremap <C-j> :cnext<CR>
 nnoremap <C-k> :cprev<CR>
 
-nnoremap <silent><F3> :set hlsearch!<CR>
+nnoremap <silent><F7> :set hlsearch!<CR>
 
 vnoremap <leader>p "_dP
 vnoremap <leader>y "+y

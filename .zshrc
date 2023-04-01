@@ -9,7 +9,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # one was loaded, run: echo $RANDOM_THEME See 
 # https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 # https://github.com/romkatv/powerlevel10k
-ZSH_THEME="powerlevel10k/powerlevel10k"
+ZSH_THEME="random"
 
 # Set list of themes to pick from when loading at random Setting this variable 
 # when ZSH_THEME=random will cause zsh to load a theme from this variable 
@@ -70,7 +70,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # plugins slow down shell startup.
 # https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md
 # https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md
-plugins=(git gitignore archlinux web-search pip python zsh-syntax-highlighting zsh-autosuggestions docker docker-compose vi-mode yarn)
+plugins=(git gitignore archlinux web-search pip python zsh-syntax-highlighting zsh-autosuggestions docker docker-compose vi-mode yarn tmux)
 
 # https://github.com/zsh-users/zsh-completions
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
@@ -106,11 +106,10 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # https://github.com/Findarato/pokemon-colorscripts
 pokemon-colorscripts -r
 
 # https://github.com/junegunn/fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source /usr/share/fzf/completion.zsh && source /usr/share/fzf/key-bindings.zsh
