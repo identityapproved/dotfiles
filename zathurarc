@@ -1,0 +1,20 @@
+unmap f
+map f toggle_fullscreen
+map [fullscreen] f toggle_fullscreen
+
+set render-loading              false
+
+# copy selection to system clipboard
+set selection-clipboard "clipboard"
+
+#stop at page boundries
+set scroll-page-aware "true"
+set scroll-step 123
+
+# Recolor mode settings
+set default-bg                  "rgba(0,0,0,0.7)"
+set recolor-lightcolor          "rgba(0,0,0,0)" # Background
+
+# Startup options
+set adjust-open width
+set recolor true
