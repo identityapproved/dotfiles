@@ -74,6 +74,8 @@ Plug 'PhilRunninger/nerdtree-buffer-ops'
 Plug 'PhilRunninger/nerdtree-visual-selection'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
+Plug 'preservim/nerdcommenter'
+
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
