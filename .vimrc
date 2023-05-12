@@ -9,6 +9,7 @@ set expandtab
 set nobackup
 set nowritebackup
 set noswapfile
+set nocompatible
 
 " Indentation
 set smartindent
@@ -77,6 +78,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'preservim/nerdcommenter'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'sheerun/vim-polyglot'
 
 call plug#end()
 
