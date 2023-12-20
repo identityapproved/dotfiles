@@ -27,6 +27,7 @@ install_lunarvim_prerequisites() {
 
 # Function to install LunarVim
 install_lunarvim() {
+  sudo rm /usr/lib/python3.11/EXTERNALLY-MANAGED
   echo "Choose LunarVim release:"
   echo "[1] Stable | [2] Nightly"
 

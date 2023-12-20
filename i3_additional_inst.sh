@@ -39,5 +39,7 @@ case $choice in
 esac
 
 # Install autotiling
-echo "Installing https://github.com/nwg-piotr/autotiling"
-yay -S autotiling
+echo "Removing i3-lock"
+yay -Rns i3lock
+echo "Installing autotiling, i3lock-color, maim, conky, xset, xkblayout-state-git, jq"
+yay -S --noconfirm autotiling i3lock-color maim conky xset xkblayout-state-git jq

@@ -23,7 +23,7 @@ ln -sf "$DOTFILES_DIR/.zshrc" "$HOME/.zshrc"
 ln -sf "$DOTFILES_DIR/.aliases" "$HOME/.aliases"
 
 # List of directories to link
-directories=("alacritty" "ranger" "tmux" "zathura")
+directories=("alacritty" "i3" "rofi" "ranger" "bat" "tmux" "zathura" "nvim-wiki")
 
 for dir in "${directories[@]}"; do
   target_dir="$CONFIG_DIR/$dir"
