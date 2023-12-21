@@ -41,5 +41,5 @@ esac
 # Install autotiling
 echo "Removing i3-lock"
 yay -Rns i3lock
-echo "Installing autotiling, i3lock-color, maim, conky, xset, xkblayout-state-git, jq"
-yay -S --noconfirm autotiling i3lock-color maim conky xset xkblayout-state-git jq
+echo "Installing autotiling, i3lock-color, maim, xset, xkblayout-state-git, jq"
+yay -S --noconfirm autotiling i3lock-color maim xset xkblayout-state-git jq

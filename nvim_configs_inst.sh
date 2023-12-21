@@ -59,8 +59,10 @@ clone_additional_configs() {
     "nvim-kickstart"
     "nvim-lazyvim"
     "nvim-nvchad"
+    "nvim-craftzdog"
   )
 
+  tmp_dir=$(mktemp -d) # Create a temporary directory
   mkdir -p "${configs[@]/#/$CONFIG_DIR/}" && echo "Created directories: ${configs[@]/#/$CONFIG_DIR/}"
 
   for config in "${configs[@]}"; do
@@ -76,6 +78,12 @@ clone_additional_configs() {
         ;;
       "nvim-nvchad")
         git clone --depth 1 "https://github.com/NvChad/NvChad" "$CONFIG_DIR/$config"
+        ;;
+      "nvim-craftzdog")
+        # Clone only the Neovim-related files from nvim-craftzdog
+        git clone --depth 1 --branch master --single-branch "https://github.com/craftzdog/dotfiles-public.git" "$tmp_dir/$config"
+        mv "$tmp_dir/$config/.config/nvim/*" "$CONFIG_DIR/$config"
+        rm -rf "$tmp_dir"
         ;;
       *)
         echo "Unknown configuration: $config"
