@@ -120,8 +120,12 @@ bindsym Shift+Print exec --no-startup-id maim --select "$HOME/Pictures/screensho
 # configure multiple keyboard layouts and hotkey to switch
 # bindsym $mod+Ctrl+Shift+space exec setxkbmap -layout us
 # bindsym $mod+Ctrl+Shift+F12 exec setxkbmap -layout ua
-exec_always "setxkbmap -model pc104 -layout us,ua -option grp:ctrl_alt_shift_toggle"
+exec_always "setxkbmap -model pc104 -layout us,ua -option grp:alt_shift_toggle"
 #exec --no-startup-id setxkbmap -layout 'us,sk' -variant altgr-intl,qwerty -option 'grp:alt_caps_toggle'
+
+# swap Escape and Caps
+# grep "caps" /usr/share/X11/xkb/rules/base.lst
+exec_always "setxkbmap -layout us,ua -option caps:swapescape"
 
 # change focus
 bindsym $mod+h focus left
@@ -162,7 +166,7 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+space floating toggle
 
 for_window [title="Picture-in-picture"] floating enable
 for_window [class="VirtualBox"]         floating enable
@@ -170,7 +174,7 @@ for_window [class="mpv"]                floating enable
 for_window [class="vlc"]                floating enable
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+shift+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -213,15 +217,15 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1:  "
-set $ws2 "2:  "
-set $ws3 "3:  "
-set $ws4 "4:  "
-set $ws5 "5:  "
-set $ws6 "6:  "
-set $ws7 "7:  "
-set $ws8 "8: ♫ "
-set $ws9 "9:  "
+set $ws1 "1: "
+set $ws2 "2: "
+set $ws3 "3: "
+set $ws4 "4: "
+set $ws5 "5: "
+set $ws6 "6: "
+set $ws7 "7: "
+set $ws8 "8:♫ "
+set $ws9 "9: "
 
 # bind program to workspace and focus to them on startup:
 assign [class="alacritty"] $ws1
@@ -229,13 +233,17 @@ assign [class="(?i)firefox"] $ws2
 assign [class="virtualbox"] $ws3
 assign [class="thunderbird"] $ws4
 assign [class="discord"] $ws5
+assign [class="signal"] $ws6
+assign [class="obsidian"] $ws7
+
 
 # automatic set focus new window if it opens on another workspace than the current:
 for_window [class=alacritty] focus
 for_window [class=(?i)firefox] focus
-for_window [class=VirtualBox] focus
-for_window [class=Thunderbird] focus
-for_window [class=Discord] focus
+for_window [class=virtualbox] focus
+for_window [class=thunderbird] focus
+for_window [class=signal] focus
+for_window [class=obsidian] focus
 
 # reload the configuration file
 bindsym $mod+Ctrl+r reload
@@ -291,10 +299,21 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# color settings for bar and windows #
+# Dracula? theme colors
+# class                 border  bground text    indicator child_border
+client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
+client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
+client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
+client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
+client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
+client.background       #F8F8F2
+
+# bar settings (input comes from i3blocks) #
+
+# color settings for bar #
 
 # Define colors variables:
-set $darkbluetrans	#08052be6
+set $darkbluetrans	#08052b
 set $darkblue		#08052b
 set $lightblue		#5294e2
 set $urgentred		#e53935
@@ -306,31 +325,14 @@ set $grey		#b0b5bd
 set $mediumgrey		#8b8b8b
 set $yellowbrown	#e1b700
 
-# define colors for windows:
-#class		        	border		bground		text		indicator	child_border
-client.focused		    	$lightblue	$darkblue	$white		$mediumgrey	$mediumgrey
-client.unfocused	    	$darkblue	$darkblue	$grey		$darkgrey	$darkgrey
-client.focused_inactive		$darkblue	$darkblue	$grey		$black		$black
-client.urgent		    	$urgentred	$urgentred	$white		$yellowbrown	$yellowbrown
-
-# Dracula? theme colors
-# class                 border  bground text    indicator child_border
-# client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
-# client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
-# client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
-# client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
-# client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
-# client.background       #F8F8F2
-
-# bar settings (input comes from i3blocks) #
-
 # Start i3bar to display a workspace bar
 # (plus the system information i3status finds out, if available)
 bar {
 		font pango: Iosevka Nerd Font 11
 		status_command i3blocks -c ~/.config/i3/i3blocks.conf
 	    	position top
-	    	i3bar_command i3bar --transparency
+	    	i3bar_command i3bar 
+        # --transparency
 # it could be that you have no primary display set: set one (xrandr --output <output> --primary)
 # reference: https://i3wm.org/docs/userguide.html#_tray_output
 		    tray_output primary
