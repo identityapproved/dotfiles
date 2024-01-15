@@ -60,6 +60,7 @@ clone_additional_configs() {
     "nvim-lazyvim"
     "nvim-nvchad"
     "nvim-craftzdog"
+    "nvim-vimacs"
   )
 
   tmp_dir=$(mktemp -d) # Create a temporary directory
@@ -83,12 +84,17 @@ clone_additional_configs() {
         # Clone only the Neovim-related files from nvim-craftzdog
         git clone --depth 1 --branch master --single-branch "https://github.com/craftzdog/dotfiles-public.git" "$tmp_dir/$config"
         mv "$tmp_dir/$config/.config/nvim/*" "$CONFIG_DIR/$config"
-        rm -rf "$tmp_dir"
+        # rm -rf "$tmp_dir"
+        ;;
+      "nvim-vimacs")
+        git clone --depth 1 "https://github.com/orhnk/vimacs.git" "$tmp_dir/$config"
+        cd $tmp_dir/$config && ./INSTALL.sh
         ;;
       *)
         echo "Unknown configuration: $config"
         ;;
     esac
+    rm -rf "$tmp_dir"
     echo "Cloned repository for $config"
 
     # Remove .git directory if it exists
