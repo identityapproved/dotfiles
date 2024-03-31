@@ -15,12 +15,14 @@ gaps outer 3
 smart_borders on
 hide_edge_borders smart
 
-# autostart #
+# autostart 
 
 exec_always --no-startup-id ~/.screenlayout/monitors.sh
+exec_always --no-startup-id unclutter 
+
 
 # exec_always --no-startup-id sh $HOME/.config/polybar/launch.sh
-exec --no-startup-id sleep 1 && feh --bg-fill ~/.config/wallpapers/sky_1.jpg ~/.config/wallpapers/sky_2.jpg 
+exec --no-startup-id sleep 1 && feh --bg-fill ~/.config/wallpapers/lain_1.jpg ~/.config/wallpapers/lain_3.jpg
 
 # set powersavings for display:
 exec --no-startup-id xset s 480 dpms 600 600 600
@@ -76,7 +78,7 @@ exec_always --no-startup-id autotiling
 
 # Autostart apps as you like
 exec --no-startup-id sleep 2 && alacritty
-exec --no-startup-id sleep 13 && firefox
+# exec --no-startup-id sleep 13 && firefox
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -229,7 +231,7 @@ set $ws9 "9: "
 
 # bind program to workspace and focus to them on startup:
 assign [class="alacritty"] $ws1
-assign [class="(?i)firefox"] $ws2
+# assign [class="(?i)firefox"] $ws2
 assign [class="virtualbox"] $ws3
 assign [class="thunderbird"] $ws4
 assign [class="discord"] $ws5
@@ -239,7 +241,7 @@ assign [class="obsidian"] $ws7
 
 # automatic set focus new window if it opens on another workspace than the current:
 for_window [class=alacritty] focus
-for_window [class=(?i)firefox] focus
+# for_window [class=(?i)firefox] focus
 for_window [class=virtualbox] focus
 for_window [class=thunderbird] focus
 for_window [class=signal] focus
