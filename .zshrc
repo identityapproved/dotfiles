@@ -20,7 +20,7 @@ HIST_STAMPS="dd.mm.yyyy"
 # https://github.com/jeffreytse/zsh-vi-mode
 # https://github.com/djui/alias-tips
 # https://github.com/thirteen37/fzf-alias
-plugins=(git gitignore web-search pip python zsh-syntax-highlighting zsh-autosuggestions docker docker-compose zsh-vi-mode yarn tmux cd-ls zsh-git-fzf zsh-wakatime alias-tips ufw themes fzf-alias archlinux)
+plugins=(git gitignore web-search pip python zsh-syntax-highlighting zsh-autosuggestions docker docker-compose zsh-vi-mode yarn tmux cd-ls zsh-git-fzf alias-tips ufw themes fzf-alias archlinux)
 
 source $ZSH/oh-my-zsh.sh
 source $HOME/.aliases
@@ -28,10 +28,10 @@ source $HOME/.aliases
 vv() {
   # Assumes all configs exist in directories named ~/.config/nvim-*
   local config=$(fd --max-depth 1 --glob 'nvim-*' ~/.config | fzf --prompt="Neovim Configs > " --height=~50% --layout=reverse --border --exit-0)
- 
+
   # If I exit fzf without selecting a config, don't open Neovim
   [[ -z $config ]] && echo "No config selected" && return
- 
+
   # Open Neovim with the selected config
   NVIM_APPNAME=$(basename $config) nvim
 }
@@ -42,14 +42,3 @@ export FZF_DEFAULT_OPTS='--reverse --preview="bat {}" --info=inline --color=fg:#
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# bun completions
-[ -s "/home/identityapproved/.bun/_bun" ] && source "/home/identityapproved/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
-
-# Load Angular CLI autocompletion.
-source <(ng completion script)

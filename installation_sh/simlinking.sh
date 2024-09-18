@@ -23,7 +23,7 @@ ln -sf "$DOTFILES_DIR/.zshrc" "$HOME/.zshrc"
 ln -sf "$DOTFILES_DIR/.aliases" "$HOME/.aliases"
 
 # List of directories to link
-directories=("alacritty" "i3" "rofi" "ranger" "bat" "tmux" "zathura" "nvim-wiki" "wallpapers" "translate-shell")
+directories=("alacritty" "i3" "rofi" "ranger" "bat" "tmux" "zathura" "wallpapers" "translate-shell")
 
 for dir in "${directories[@]}"; do
   target_dir="$CONFIG_DIR/$dir"
@@ -41,7 +41,7 @@ for dir in "${directories[@]}"; do
     mv "$target_dir" "$target_dir.bak"
     echo "Existing directory '$target_dir' renamed to '$target_dir.bak'"
   fi
-  
+
   # Create symlink
   ln -sfn "$DOTFILES_DIR/$dir" "$target_dir"
   echo "Created symlink: $target_dir"
