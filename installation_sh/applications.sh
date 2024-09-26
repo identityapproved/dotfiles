@@ -56,6 +56,7 @@ packages=(
   i3lock-color
   xkblayout-state-git
   ntfs-3g
+  zoxide
 )
 
 for package in "${packages[@]}"; do

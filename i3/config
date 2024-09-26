@@ -22,19 +22,10 @@ set $preferredScreenCaptureTool /usr/bin/maim
 
 
 ###########################################
-# gaps
-###########################################
-for_window [class="^.*"] border pixel 3
-gaps inner 6
-gaps outer 3
-smart_borders on
-hide_edge_borders smart
-
-###########################################
 # autostart
 ###########################################
 
-exec_always --no-startup-id ~/.screenlayout/monitors.sh
+# exec_always --no-startup-id ~/.screenlayout/layout.sh
 exec_always --no-startup-id unclutter
 
 ### Wallpaper: ###
@@ -45,7 +36,7 @@ exec --no-startup-id sleep 1 && feh --bg-fill ~/.config/wallpapers/lain_1.jpg ~/
 exec --no-startup-id xset s 480 dpms 600 600 600
 
 # disable power saving (for example if using xscreensaver)
-#exec --no-startup-id xset -dpms
+# exec --no-startup-id xset -dpms
 
 # compositor #
 
@@ -75,8 +66,17 @@ exec_always --no-startup-id picom -b
 #exec_always --no-startup-id picom --config  $HOME/.config/picom/picom.conf
 
 # Start XDG autostart .desktop files using dex. See also
-# exec --no-startup-id dex -a -s /etc/xdg/autostart/:~/.config/autostart/
+exec --no-startup-id dex -a -s /etc/xdg/autostart/:~/.config/autostart/
 exec --no-startup-id dex-autostart --autostart --environment i3
+
+###########################################
+# gaps
+###########################################
+for_window [class="^.*"] border pixel 3
+gaps inner 6
+gaps outer 3
+smart_borders on
+hide_edge_borders smart
 
 # Autolock && Suspend
 exec --no-startup-id xautolock -time 32 -locker "$HOME/.config/i3/scripts/colour_lock"
